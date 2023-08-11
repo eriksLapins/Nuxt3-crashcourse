@@ -16,6 +16,18 @@
     // can be used on the browser and on the server
     // fetch the products
     const { data: products } = await useFetch('https://fakestoreapi.com/products')
+
+    // override the site-wide meta values
+    useHead({
+        title: 'Nuxt Dojo | Merch',
+        meta: [
+            {
+                name: 'description',
+                content: 'Nuxt 3 Merch'
+            }
+        ]
+    })
+
 </script>
 
 <style lang="scss" scoped>
