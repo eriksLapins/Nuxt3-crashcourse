@@ -1,7 +1,8 @@
 <template>
     <div>
-        <p>product details for {{ id }}</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum illum accusantium officiis, nihil est cupiditate aliquam non? Obcaecati sapiente provident beatae, ut ullam sint laudantium aperiam ea perspiciatis odit officiis.</p>
+        <p>{{ product.title }}</p>
+        <p>{{ product.price }}</p>
+        <p>{{ product.id }}</p>    
     </div>
 </template>
 
@@ -10,6 +11,11 @@
         layout: 'products'
     })
     const { id } = useRoute().params;
+    const uri = 'https://fakestoreapi.com/products/' + id;
+
+    // fetch the data and each time we land on a new product, we will fetch again (that is why we have the key)
+        // otherwise fetch will use the previous fetched data
+    const { data: product } = await useFetch(uri, { key: id });
 </script>
 
 <style scoped>
